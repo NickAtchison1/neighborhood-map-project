@@ -13,6 +13,6 @@ This is the neighborhood map project for the Udacity Full Stack Developer Course
 
 Clone or download from github
 
+## Running the Application
 
-**View in a browser:**
 Open Index.html in a browser
