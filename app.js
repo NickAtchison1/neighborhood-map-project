@@ -1,10 +1,14 @@
+'uses strict'
+
 const locations = [
-    {title: 'Park Ave Penthouse', location: {lat: 40.7713024, lng: -73.9632393}},
-      {title: 'Chelsea Loft', location: {lat: 40.7444883, lng: -73.9949465}},
-      {title: 'Union Square Open Floor Plan', location: {lat: 40.7347062, lng: -73.9895759}},
-      {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
-      {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
-      {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
+    {title: 'Statue of Liberty', location: {lat: 40.6892494, lng: -74.0445004}},
+      {title: 'Empire State Building', location: {lat: 40.7485452, lng: -73.98576349999996}},
+      {title: 'Central Park', location: {lat: 40.7828647, lng: -73.96535510000001}},
+      {title: 'Rockefeller Center', location: {lat: 40.7587402, lng: -73.97867359999998}},
+      {title: 'New York Public Library', location: {lat: 40.75318230000001, lng: -73.98225339999999}},
+      {title: 'Grand Central Terminal', location: {lat: 40.7527262, lng: -73.9772294}},
+      {title: 'The Metropoliton Museum of Art', location: {lat: 40.7794366, lng: -73.96324400000003}},
+      {title: 'The National 9/11 Memorial & Museum', location: {lat: 40.7114743, lng: -74.01344319999998}}
     ];
   
 
@@ -73,7 +77,7 @@ const locations = [
 
         var title, contentString;
     
-        let wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + title + '&format=json&callback=wikiCallback';
+        let wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + title + "'s Wikipedia page" + '&format=json&callback=wikiCallback';
     
         $.ajax({
             url: wikiUrl,
@@ -89,6 +93,9 @@ const locations = [
                 "</div>" +
                 '<div><a href="' + url + '">' + articleStr + '</a></div>'; marker.contentString;
         
+            },
+            error: function() {
+              alert('Request apears to be unavailable. Please try again later');
             }
         })
           
@@ -138,6 +145,7 @@ const locations = [
           self.vmLocations()[j].show(false);
           if (self.vmLocations()[j].marker) {
             self.vmLocations()[j].marker.setVisible(false); 
+            
           }
         }
       }

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1">
     <title>Neighborhood Map</title>
     <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -14,7 +15,7 @@
       <input type="search" id="search-input" placeholder="filter your location here" data-bind="textInput: filterText">
       
       <ul class="sites-list" data-bind="foreach: vmLocations">
-        <p class="sites" data-bind="text: title, click: $parent.showLocation, visible: show"></p>
+        <li class="sites" data-bind="text: title, click: $parent.showLocation, visible: show"></li>
       </ul>
     </div>
    
@@ -26,7 +27,7 @@
     <script src="lib/knockout-3.4.2.js"></script>
     <script src="app.js"></script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo-g23kC3lRQcZFWHSjH7LU1sZkObkVyQ&v=3&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo-g23kC3lRQcZFWHSjH7LU1sZkObkVyQ&v=3&callback=initMap" onerror="mapError()"></script>
 
 
  
