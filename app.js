@@ -95,7 +95,7 @@ const locations = [
         
             },
             error: function() {
-              alert('Request apears to be unavailable. Please try again later');
+              contentString = "<div>Request appears to be unavailable. Please try again later.</div>"
             }
         })
           
