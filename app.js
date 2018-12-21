@@ -7,8 +7,7 @@ const locations = [
       {title: 'Rockefeller Center', location: {lat: 40.7587402, lng: -73.97867359999998}},
       {title: 'New York Public Library', location: {lat: 40.75318230000001, lng: -73.98225339999999}},
       {title: 'Grand Central Terminal', location: {lat: 40.7527262, lng: -73.9772294}},
-      {title: 'The Metropoliton Museum of Art', location: {lat: 40.7794366, lng: -73.96324400000003}},
-      {title: 'The National 9/11 Memorial & Museum', location: {lat: 40.7114743, lng: -74.01344319999998}}
+      {title: 'Metropolitan Museum of Art', location: {lat: 40.7794366, lng: -73.96324400000003}}
     ];
   
 
