@@ -50,9 +50,13 @@ li {
     margin-bottom: 0px;
   }
 
+  li {
+    padding: 10%;
+  }
+
   #search-input {
     margin: 10px 20px 0px 0px;
-    padding: 10px 80px 5px 10px;
+    padding: 10px 40px 5px 10px;
   }
 }
 
