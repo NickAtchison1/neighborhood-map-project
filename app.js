@@ -1,4 +1,4 @@
-'uses strict'
+"use strict";
 
 const locations = [
     {title: 'Statue of Liberty', location: {lat: 40.6892494, lng: -74.0445004}},
@@ -16,6 +16,8 @@ const locations = [
   
   
   let markers = [];
+
+  var viewModel;
   
 
   function initMap() {
@@ -27,7 +29,7 @@ const locations = [
   
     let infoWindow = new google.maps.InfoWindow();
   
-    for (i = 0; i < locations.length; i++) {
+    for (let i = 0; i < locations.length; i++) {
       (function() {
 
         var title = locations[i].title;
@@ -113,7 +115,8 @@ const locations = [
     let self = this;
     this.title = data.title;
     this.location = data.location;
-    this.show = ko.observable(true);
+    this.marker = data.marker;
+    this.show = ko.observable(true); 
   };
   
   // View Model
@@ -122,7 +125,7 @@ const locations = [
     this.vmLocations = ko.observableArray();
     this.filterText = ko.observable("");
   
-    for (i = 0; i < locations.length; i++) {
+    for (let i = 0; i < locations.length; i++) {
       let place = new Site(locations[i]);
       self.vmLocations.push(place);
     }
@@ -131,7 +134,7 @@ const locations = [
     this.searchFilter = ko.computed(function() {
       let filter = self.filterText().toLowerCase(); 
       
-      for (j = 0; j < self.vmLocations().length; j++) {
+      for (let j = 0; j < self.vmLocations().length; j++) {
       
         if (
           self .vmLocations()[j].title.toLowerCase() .indexOf(filter) > -1
@@ -145,7 +148,7 @@ const locations = [
           self.vmLocations()[j].show(false);
           if (self.vmLocations()[j].marker) {
             self.vmLocations()[j].marker.setVisible(false); 
-            
+           
           }
         }
       }
