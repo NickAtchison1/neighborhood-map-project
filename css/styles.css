@@ -53,6 +53,10 @@ li {
     margin-bottom: 0px;
   }
 
+  #map {
+    padding-left: 30%;
+  }
+
   li {
     padding: 10%;
   }
