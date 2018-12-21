@@ -110,7 +110,6 @@ const locations = [
   function mapError() {
     alert("Map could not be loaded at this moment. Please try again");
   }
-  
 
   const Site = function(data) {
     let self = this;
@@ -135,7 +134,6 @@ const locations = [
     
     this.searchFilter = ko.computed(function() {
       let filter = self.filterText().toLowerCase(); 
-      
       for (let j = 0; j < self.vmLocations().length; j++) {
       
         if (
@@ -155,12 +153,14 @@ const locations = [
         }
       }
     });
-  
     
     this.showLocation = function(locations) {
       google.maps.event.trigger(locations.marker, "click");
     };
   };
+
+  
+
   
   viewModel = new ViewModel();
 
