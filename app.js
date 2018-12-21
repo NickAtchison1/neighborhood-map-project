@@ -78,8 +78,10 @@ const locations = [
         }
 
         var title, contentString;
+
+        var wikiTitle = title.split(' ').join('_');
     
-        let wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + title + "'s Wikipedia page" + '&format=json&callback=wikiCallback';
+        let wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + wikiTitle  + '&format=json&callback=wikiCallback';
     
         $.ajax({
             url: wikiUrl,
