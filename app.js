@@ -87,7 +87,7 @@ const locations = [
             success: function (response) {
               let articleStr = response[0];
 
-                let url = 'http://en.wikipedia.org/wiki/' + articleStr;
+                let url = 'https://en.wikipedia.org/wiki/' + articleStr;
                 contentString =  '<div class="title">' +
                 marker.title +
                 "</div>" +
