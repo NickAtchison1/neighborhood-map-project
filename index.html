@@ -12,7 +12,7 @@
 
   
     <div class="nav">
-      <input type="search" id="search-input" placeholder="filter your location here" data-bind="textInput: filterText">
+      <input type="search" id="search-input" placeholder="filter your location" data-bind="textInput: filterText">
       
       <ul class="sites-list" data-bind="foreach: vmLocations">
         <li class="sites" data-bind="text: title, click: $parent.showLocation, visible: show"></li>
