@@ -17,7 +17,7 @@ body {
   top: 0;
   left: 0;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding: 20px 5px 5px 10px
 
 }
  #map {
@@ -51,7 +51,7 @@ li {
   }
 
   #search-input {
-    margin: 10px 5px 10px 0px;
+    margin: 10px 20px 0px 0px;
     padding: 10px 80px 5px 10px;
   }
 }
