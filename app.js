@@ -26,9 +26,9 @@ const locations = [
       zoom: 13
     });
   
-    let infoWindow = new google.maps.InfoWindow();
+    var infoWindow = new google.maps.InfoWindow();
   
-    for (let i = 0; i < locations.length; i++) {
+    for (var i = 0; i < locations.length; i++) {
       (function() {
 
         var title = locations[i].title;
@@ -80,7 +80,7 @@ const locations = [
 
         var wikiTitle = title.split(' ').join('_');
     
-        let wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + wikiTitle  + '&format=json&callback=wikiCallback';
+        var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + wikiTitle  + '&format=json&callback=wikiCallback';
     
         $.ajax({
             url: wikiUrl,
@@ -88,9 +88,9 @@ const locations = [
             jsonp: 'callback',
 
             success: function (response) {
-              let articleStr = response[0];
+              var articleStr = response[0];
 
-                let url = 'https://en.wikipedia.org/wiki/' + articleStr;
+                var url = 'https://en.wikipedia.org/wiki/' + articleStr;
                 contentString =  '<div class="title">' +
                 marker.title +
                 "</div>" +
@@ -148,7 +148,7 @@ const locations = [
           }
         } else {
           self.vmLocations()[j].show(false);
-          if (self.vmLocations()[j].marker && infoWindow.marker == location.marker) {
+          if (self.vmLocations()[j].marker) {
             self.vmLocations()[j].marker.setVisible(false); 
            
           }
