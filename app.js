@@ -117,6 +117,7 @@ const locations = [
     this.title = data.title;
     this.location = data.location;
     this.marker = data.marker;
+    this.infoWindow = data.infoWindow;
     this.show = ko.observable(true); 
   };
   
@@ -147,7 +148,7 @@ const locations = [
           }
         } else {
           self.vmLocations()[j].show(false);
-          if (self.vmLocations()[j].marker) {
+          if (self.vmLocations()[j].marker && infoWindow.marker == location.marker) {
             self.vmLocations()[j].marker.setVisible(false); 
            
           }
