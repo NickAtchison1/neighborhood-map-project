@@ -130,7 +130,7 @@ const locations = [
     this.vmLocations = ko.observableArray(); //for filtering
     this.filterText = ko.observable("");
   
- // iterate throough locatons and create a new Site object for each location and push the new object vmLocations
+ // iterate throough locatons and create a new Site object for each location and push the new object to vmLocations
     for (let i = 0; i < locations.length; i++) {
       let place = new Site(locations[i]);
       self.vmLocations.push(place); 
