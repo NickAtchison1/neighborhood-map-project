@@ -166,8 +166,6 @@ const locations = [
     };
   };
 
-  
- 
  //instantiate a new View Model 
   viewModel = new ViewModel();
 // apply knockout.js bindings
