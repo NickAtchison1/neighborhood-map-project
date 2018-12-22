@@ -1,5 +1,6 @@
 "use strict";
 
+//locations in New York
 const locations = [
     {title: 'Statue of Liberty', location: {lat: 40.6892494, lng: -74.0445004}},
       {title: 'Empire State Building', location: {lat: 40.7485452, lng: -73.98576349999996}},
@@ -13,9 +14,9 @@ const locations = [
 
   let map;
   
-  
+  // create a blank array for all of the location markers
   let markers = [];
-
+// dclare viewModel globally in order to access the vmLocations in initMap
   var viewModel;
   
 
@@ -28,6 +29,7 @@ const locations = [
   
     var infoWindow = new google.maps.InfoWindow();
   
+    //iterates throough locations array, creates and drops markers
     for (var i = 0; i < locations.length; i++) {
       (function() {
 
@@ -45,16 +47,17 @@ const locations = [
   
         viewModel.vmLocations()[i].marker = marker;
   
-    
+        // Event listener to open infoWindow when marker is clicked
         marker.addListener("click", function() {
-      
+         //show inforamtion in infoWindow when opened
           populateInfoWindow(this, infoWindow);
-      
+          // shows wiki info
           infoWindow.setContent(contentString);
         });
  
+        //Populates info window when marker is clicked
         function populateInfoWindow(marker, infoWindow) {
-  
+          // Make sure infoWindow is not already open for marker
           if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             infoWindow.setContent(
@@ -69,17 +72,17 @@ const locations = [
               marker.setAnimation(null);
             }, 2130);
             infoWindow.open(map, marker);
-    
+           //clear marker when infoWindow is closed
             infoWindow.addListener("closeclick", function() {
               infoWindow.setMarker = null;
             });
           }
         }
-
+        // variables for wikipedia api
         var title, contentString;
-
+        // replace spaces in title string with _ for wikipedia url
         var wikiTitle = title.split(' ').join('_');
-    
+        // wikipedia url and AJAX request
         var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + wikiTitle  + '&format=json&callback=wikiCallback';
     
         $.ajax({
@@ -111,6 +114,7 @@ const locations = [
     alert("Map could not be loaded at this moment. Please try again");
   }
 
+  // Site constructor
   const Site = function(data) {
     let self = this;
     this.title = data.title;
@@ -123,46 +127,49 @@ const locations = [
   // View Model
   const ViewModel = function() {
     let self = this;
-    this.vmLocations = ko.observableArray();
+    this.vmLocations = ko.observableArray(); //for filtering
     this.filterText = ko.observable("");
   
+ // iterate throough locatons and create a new Site object for each location and push the new object vmLocations
     for (let i = 0; i < locations.length; i++) {
       let place = new Site(locations[i]);
-      self.vmLocations.push(place);
+      self.vmLocations.push(place); 
     }
   
     
     this.searchFilter = ko.computed(function() {
       let filter = self.filterText().toLowerCase(); 
+      //filter through vmLocations and filter as user is typing
       for (let j = 0; j < self.vmLocations().length; j++) {
-      
+    
         if (
           self .vmLocations()[j].title.toLowerCase() .indexOf(filter) > -1
                
         ) {
-          self.vmLocations()[j].show(true); 
+          self.vmLocations()[j].show(true); //shows from filtered list
           if (self.vmLocations()[j].marker) {
-            self.vmLocations()[j].marker.setVisible(true); 
+            self.vmLocations()[j].marker.setVisible(true);  //shows markers in filtered list
           }
         } else {
-          self.vmLocations()[j].show(false);
+          self.vmLocations()[j].show(false); //hides locations not in filtered list
           if (self.vmLocations()[j].marker) {
-            self.vmLocations()[j].marker.setVisible(false); 
+            self.vmLocations()[j].marker.setVisible(false); //hides markers not in filtered list
            
           }
         }
       }
     });
     
+    //marker bounces when location in the list is clicked
     this.showLocation = function(locations) {
       google.maps.event.trigger(locations.marker, "click");
     };
   };
 
   
-
-  
+ 
+ //instantiate a new View Model 
   viewModel = new ViewModel();
-
+// apply knockout.js bindings
   ko.applyBindings(viewModel);
   
